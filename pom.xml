@@ -59,6 +59,10 @@
                     <includes>
                         <include>**/*Test.java</include>
                     </includes>
+                    <!-- TODO: add the integration of the AppVeyor with the H2 Database instead this if possible -->
+                    <excludes>
+                        <exclude>**/*DatabaseConnectionTest.java</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
