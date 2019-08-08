@@ -2,11 +2,44 @@
 <beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xmlns="http://www.springframework.org/schema/data/jpa"
+             xmlns:context="http://www.springframework.org/schema/context"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
              https://www.springframework.org/schema/beans/spring-beans.xsd
              http://www.springframework.org/schema/data/jpa
-             https://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+             https://www.springframework.org/schema/data/jpa/spring-jpa.xsd
+             http://www.springframework.org/schema/context
+             https://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- TODO: add hbm2ddl property -->
 
     <repositories base-package="ru.wkn.repository"/>
+    <context:component-scan base-package="ru.wkn.service"/>
+
+    <!-- TODO: check HikariCP using -->
+    <beans:bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
+        <beans:property name="jdbcUrl" value="jdbc:h2:tcp://localhost/~/bacgame"/>
+        <beans:property name="username" value="bacgame-user"/>
+        <beans:property name="password" value="bacgame-password"/>
+        <beans:property name="maximumPoolSize" value="6"/>
+    </beans:bean>
+
+    <beans:bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+        <beans:property name="generateDdl" value="true"/>
+        <beans:property name="showSql" value="true"/>
+    </beans:bean>
+
+    <beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <beans:property name="persistenceUnitName" value="h2-bacgame-hibernate"/>
+        <beans:property name="sharedCacheMode" value="ENABLE_SELECTIVE"/>
+        <beans:property name="jpaDialect" value="org.hibernate.dialect.H2Dialect"/>
+        <beans:property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+        <beans:property name="packagesToScan" value="ru.wkn.entities"/>
+        <beans:property name="dataSource" ref="dataSource"/>
+    </beans:bean>
+
+    <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <beans:property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <beans:property name="dataSource" ref="dataSource"/>
+    </beans:bean>
 
 </beans:beans>
