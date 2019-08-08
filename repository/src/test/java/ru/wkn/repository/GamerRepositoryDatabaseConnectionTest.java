@@ -11,14 +11,14 @@ import java.util.Collection;
 
 import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
-class GamerRepositoryTest {
+class GamerRepositoryDatabaseConnectionTest {
 
     private static GamerRepository gamerRepository;
     private static String testingEmail = "wizard@mail.org";
     private static String testingPassword = "wisdom";
     private static ApplicationContext context =
             new ClassPathXmlApplicationContext("/META-INF/applicationContext.xml",
-                    GamerRepositoryTest.class);
+                    GamerRepositoryDatabaseConnectionTest.class);
 
     @BeforeAll
     static void fillRepository() {
