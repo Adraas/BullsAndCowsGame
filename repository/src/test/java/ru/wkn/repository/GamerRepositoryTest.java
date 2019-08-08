@@ -3,7 +3,8 @@ package ru.wkn.repository;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import ru.wkn.entities.Gamer;
 
 import java.util.Collection;
@@ -12,13 +13,17 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class GamerRepositoryTest {
 
-    @Autowired
     private static GamerRepository gamerRepository;
     private static String testingEmail = "wizard@mail.org";
     private static String testingPassword = "wisdom";
+    private static ApplicationContext context =
+            new ClassPathXmlApplicationContext("/META-INF/applicationContext.xml",
+                    GamerRepositoryTest.class);
 
     @BeforeAll
     static void fillRepository() {
+        // TODO: change to correct autowiring bean assignment principle
+        gamerRepository = (GamerRepository) context.getBean("gamerRepository");
         Gamer gamer = new Gamer("wizard", testingEmail, testingPassword);
         gamerRepository.save(gamer);
     }
