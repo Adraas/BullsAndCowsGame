@@ -13,6 +13,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import java.io.Serializable;
 
 /**
  * The class {@code Game} represents results of a completed game.
@@ -24,7 +25,7 @@ import javax.persistence.OneToOne;
 @Setter
 @ToString
 @Entity(name = "game")
-public class Game {
+public class Game implements Serializable {
 
     /**
      * The ID of a completed game.

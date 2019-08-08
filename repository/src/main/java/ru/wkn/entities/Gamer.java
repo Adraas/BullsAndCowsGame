@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.io.Serializable;
 
 /**
  * The class {@code Gamer} represents a data of a real-world gamer person.
@@ -21,7 +22,7 @@ import javax.persistence.Id;
 @Setter
 @ToString
 @Entity(name = "gamer")
-public class Gamer {
+public class Gamer implements Serializable {
 
     /**
      * The ID of a real-world gamer person.
