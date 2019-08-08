@@ -30,7 +30,7 @@ public class Game {
      * The ID of a completed game.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     /**

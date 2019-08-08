@@ -27,7 +27,7 @@ public class Gamer {
      * The ID of a real-world gamer person.
      */
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
     /**
