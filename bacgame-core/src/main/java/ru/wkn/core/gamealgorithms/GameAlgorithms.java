@@ -2,25 +2,25 @@ package ru.wkn.core.gamealgorithms;
 
 import lombok.Getter;
 import lombok.Setter;
-import ru.wkn.core.gameentities.BACGameAttempt;
-import ru.wkn.core.gameexceptions.NumbersLineLengthBACGameException;
+import ru.wkn.core.gameentities.GameAttempt;
+import ru.wkn.core.gameexceptions.NumbersLineLengthException;
 
 import java.util.Random;
 
 @Getter
 @Setter
-public class BACGameAlgorithms {
+public class GameAlgorithms {
 
     private byte numbersLineLength;
 
-    public BACGameAlgorithms(byte numbersLineLength) throws NumbersLineLengthBACGameException {
+    public GameAlgorithms(byte numbersLineLength) throws NumbersLineLengthException {
         if (numbersLineLength < 0 || numbersLineLength > 9) {
-            throw new NumbersLineLengthBACGameException(numbersLineLength);
+            throw new NumbersLineLengthException(numbersLineLength);
         }
         this.numbersLineLength = numbersLineLength;
     }
 
-    public BACGameAttempt calculate(String inputNumbersLine, String hiddenNumbersLine) {
+    public GameAttempt calculate(String inputNumbersLine, String hiddenNumbersLine) {
         return null;
     }
 
