@@ -13,14 +13,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class GameAlgorithmsTest {
 
     @Test
-    void testCalculatingToCorrectData() throws NumbersLineLengthException {
+    void testCalculatingToCorrectData() throws NumbersLineLengthException, InputNumbersLineFormatException {
         GameAlgorithms gameAlgorithms = new GameAlgorithms((byte) 4);
         String hiddenNumbersLine = "1234";
         assertEquals("4B0C", gameAlgorithms.calculate(hiddenNumbersLine, hiddenNumbersLine).getResultLine());
     }
 
     @Test
-    void testCalculatingToIncorrectData() throws NumbersLineLengthException {
+    void testCalculatingToIncorrectData() throws NumbersLineLengthException, InputNumbersLineFormatException {
         GameAlgorithms gameAlgorithms = new GameAlgorithms((byte) 4);
         String hiddenNumbersLine = "1234";
         String inputNumbersLine = "1253";
