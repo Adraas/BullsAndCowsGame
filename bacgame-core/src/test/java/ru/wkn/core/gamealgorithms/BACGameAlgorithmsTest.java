@@ -29,7 +29,7 @@ class BACGameAlgorithmsTest {
 
     @Test
     void testCalculatingToIncorrectNumbersLineLength() {
-        assertThrows(NumbersLineLengthBACGameException.class, () -> new BACGameAlgorithms((byte) 4));
+        assertThrows(NumbersLineLengthBACGameException.class, () -> new BACGameAlgorithms((byte) 14));
     }
 
     @Test
