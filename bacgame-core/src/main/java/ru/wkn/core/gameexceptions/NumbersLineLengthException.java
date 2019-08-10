@@ -10,9 +10,9 @@ public class NumbersLineLengthException extends BACGameException {
 
     /**
      * Constructors a new exception with the specified detail message.
-     * @param numberLength the obtained numbers line length
+     * @param numbersLineLength the obtained numbers line length
      */
-    public NumbersLineLengthException(byte numberLength) {
-        super("the actual number length: ".concat(String.valueOf(numberLength)).concat("; expected: [0;9]"));
+    public NumbersLineLengthException(byte numbersLineLength) {
+        super("the actual numbers line length: ".concat(String.valueOf(numbersLineLength)).concat("; expected: [0;9]"));
     }
 }
