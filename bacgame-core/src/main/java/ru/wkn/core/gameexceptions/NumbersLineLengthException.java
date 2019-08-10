@@ -10,6 +10,7 @@ public class NumbersLineLengthException extends BACGameException {
 
     /**
      * Constructors a new exception with the specified detail message.
+     *
      * @param numbersLineLength the obtained numbers line length
      */
     public NumbersLineLengthException(byte numbersLineLength) {
