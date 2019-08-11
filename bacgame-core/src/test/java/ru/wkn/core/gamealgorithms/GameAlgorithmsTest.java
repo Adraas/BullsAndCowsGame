@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 class GameAlgorithmsTest {
 
     @Test
-    void testCalculatingToCorrectData() throws NumbersLineLengthException, InputNumbersLineFormatException,
+    void testSimpleCalculatingToCorrectData() throws NumbersLineLengthException, InputNumbersLineFormatException,
             NoSuchFieldException, IllegalAccessException {
-        GameAlgorithms gameAlgorithms = new GameAlgorithms((byte) 4);
+        IGameAlgorithms gameAlgorithms = new GameAlgorithms((byte) 4);
         String hiddenNumbersLine = "1234";
         Field field = gameAlgorithms.getClass().getDeclaredField("hiddenNumbers");
         field.setAccessible(true);
@@ -23,9 +23,9 @@ class GameAlgorithmsTest {
     }
 
     @Test
-    void testCalculatingToIncorrectData() throws NumbersLineLengthException, InputNumbersLineFormatException,
+    void testSimpleCalculatingToIncorrectData() throws NumbersLineLengthException, InputNumbersLineFormatException,
             NoSuchFieldException, IllegalAccessException {
-        GameAlgorithms gameAlgorithms = new GameAlgorithms((byte) 4);
+        IGameAlgorithms gameAlgorithms = new GameAlgorithms((byte) 4);
         String inputNumbersLine = "1253";
         Field field = gameAlgorithms.getClass().getDeclaredField("hiddenNumbers");
         field.setAccessible(true);
@@ -34,12 +34,12 @@ class GameAlgorithmsTest {
     }
 
     @Test
-    void testCalculatingToIncorrectNumbersLineLength() {
+    void testSimpleCalculatingToIncorrectNumbersLineLength() {
         assertThrows(NumbersLineLengthException.class, () -> new GameAlgorithms((byte) 14));
     }
 
     @Test
-    void testCalculatingToIncorrectInputNumbersLineFormat() {
+    void testSimpleCalculatingToIncorrectInputNumbersLineFormat() {
         assertThrows(InputNumbersLineFormatException.class,
                 () -> new GameAlgorithms((byte) 4).calculate("hello world"));
     }

@@ -9,16 +9,16 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class GameAttemptResultCheckerTest {
 
     @Test
-    void testResultGradingToTrue() {
+    void testSimpleResultGradingToTrue() {
         GameAttempt gameAttempt = new GameAttempt("1234", "4B0C");
-        GameAttemptResultChecker gameAttemptResultChecker = new GameAttemptResultChecker();
+        IResultChecker gameAttemptResultChecker = new GameAttemptResultChecker();
         assertTrue(gameAttemptResultChecker.gradeResult(gameAttempt));
     }
 
     @Test
-    void testResultGradingToFalse() {
+    void testSimpleResultGradingToFalse() {
         GameAttempt gameAttempt = new GameAttempt("1234", "3B0C");
-        GameAttemptResultChecker gameAttemptResultChecker = new GameAttemptResultChecker();
+        IResultChecker gameAttemptResultChecker = new GameAttemptResultChecker();
         assertFalse(gameAttemptResultChecker.gradeResult(gameAttempt));
     }
 }
