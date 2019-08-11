@@ -13,35 +13,21 @@
     <repositories base-package="ru.wkn.repository"/>
     <context:component-scan base-package="ru.wkn.service"/>
 
-    <beans:bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource">
-        <beans:property name="jdbcUrl" value="jdbc:h2:tcp://localhost/~/bacgame"/>
-        <beans:property name="username" value="bacgame-user"/>
-        <beans:property name="password" value="bacgame-password"/>
-        <beans:property name="maximumPoolSize" value="6"/>
-    </beans:bean>
-
-    <beans:bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
-        <beans:property name="generateDdl" value="true"/>
-        <beans:property name="showSql" value="true"/>
+    <beans:bean id="persistentUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+        <beans:property name="persistenceXmlLocations">
+            <beans:list>
+                <beans:value>classpath*:META-INF/persistence.xml</beans:value>
+            </beans:list>
+        </beans:property>
     </beans:bean>
 
     <beans:bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <beans:property name="persistenceUnitManager" ref="persistentUnitManager"/>
         <beans:property name="persistenceUnitName" value="h2-bacgame-hibernate"/>
-        <beans:property name="sharedCacheMode" value="ENABLE_SELECTIVE"/>
-        <beans:property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
-        <beans:property name="packagesToScan" value="ru.wkn.entities"/>
-        <beans:property name="dataSource" ref="dataSource"/>
-        <beans:property name="jpaProperties">
-            <beans:props>
-                <beans:prop key="hibernate.hbm2ddl.auto">create</beans:prop>
-                <beans:prop key="hibernate.dialect">org.hibernate.dialect.H2Dialect</beans:prop>
-            </beans:props>
-        </beans:property>
     </beans:bean>
 
     <beans:bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <beans:property name="entityManagerFactory" ref="entityManagerFactory"/>
-        <beans:property name="dataSource" ref="dataSource"/>
     </beans:bean>
 
 </beans:beans>
