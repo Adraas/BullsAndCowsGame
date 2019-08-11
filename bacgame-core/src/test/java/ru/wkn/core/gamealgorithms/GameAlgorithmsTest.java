@@ -23,9 +23,13 @@ class GameAlgorithmsTest {
     }
 
     @Test
-    void testCalculatingToIncorrectData() throws NumbersLineLengthException, InputNumbersLineFormatException {
+    void testCalculatingToIncorrectData() throws NumbersLineLengthException, InputNumbersLineFormatException,
+            NoSuchFieldException, IllegalAccessException {
         GameAlgorithms gameAlgorithms = new GameAlgorithms((byte) 4);
         String inputNumbersLine = "1253";
+        Field field = gameAlgorithms.getClass().getDeclaredField("hiddenNumbers");
+        field.setAccessible(true);
+        field.set(gameAlgorithms, "1234".toCharArray());
         assertEquals("2B1C", gameAlgorithms.calculate(inputNumbersLine).getResultLine());
     }
 
