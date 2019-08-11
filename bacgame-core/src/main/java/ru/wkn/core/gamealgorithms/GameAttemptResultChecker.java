@@ -3,18 +3,18 @@ package ru.wkn.core.gamealgorithms;
 import ru.wkn.core.gameentities.GameAttempt;
 
 /**
- * The class {@code GameAttemptResultChecker} represents the result checker for a data obtained from general algorithms.
+ * The class {@code GameAttemptResultChecker} represents the result checker implementation for a data obtained from
+ * general algorithms.
  *
  * @author Orin Adraas
+ * @see IResultChecker
  */
-public class GameAttemptResultChecker {
+public class GameAttemptResultChecker implements IResultChecker {
 
     /**
-     * The method for the grading a data obtained from general algorithms.
-     *
-     * @param gameAttempt the answer of the general algorithms of the game
-     * @return {@code true} if the game over, else - {@code false}
+     * @see IResultChecker#gradeResult(GameAttempt)
      */
+    @Override
     public boolean gradeResult(GameAttempt gameAttempt) {
         byte numbersLineLength = (byte) gameAttempt.getInputNumbersLine().length();
         return gameAttempt.getResultLine().startsWith(String.valueOf(numbersLineLength))

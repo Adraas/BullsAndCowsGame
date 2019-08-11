@@ -13,13 +13,14 @@ import java.util.Random;
 import java.util.regex.Pattern;
 
 /**
- * The class {@code GameAlgorithms} represents the general base algorithms of the game core.
+ * The class {@code GameAlgorithms} represents the general base algorithms of the game core implementation.
  *
  * @author Orin Adraas
+ * @see IGameAlgorithms
  */
 @Getter
 @Setter
-public class GameAlgorithms {
+public class GameAlgorithms implements IGameAlgorithms {
 
     /**
      * The numbers line length (must be more than or equal 0 and less than or equal 9)
@@ -47,12 +48,9 @@ public class GameAlgorithms {
     }
 
     /**
-     * The method for the calculating answer by the input line.
-     *
-     * @param inputNumbersLine the input numbers line as a {@code String} object
-     * @return a {@code GameAttempt} object with the input data and an answer.
-     * @throws InputNumbersLineFormatException thrown if the numbers line format is incorrect.
+     * @see IGameAlgorithms#calculate(String)
      */
+    @Override
     public GameAttempt calculate(String inputNumbersLine) throws InputNumbersLineFormatException {
         if (!checkFormat(inputNumbersLine)) {
             throw new InputNumbersLineFormatException(inputNumbersLine);
