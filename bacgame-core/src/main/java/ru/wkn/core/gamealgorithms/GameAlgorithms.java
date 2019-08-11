@@ -12,13 +12,32 @@ import java.util.List;
 import java.util.Random;
 import java.util.regex.Pattern;
 
+/**
+ * The class {@code GameAlgorithms} represents the general base algorithms of the game core.
+ *
+ * @author Orin Adraas
+ */
 @Getter
 @Setter
 public class GameAlgorithms {
 
+    /**
+     * The numbers line length (must be more than or equal 0 and less than or equal 9)
+     */
     private byte numbersLineLength;
+
+    /**
+     * The hidden by the computer numbers.
+     */
     private char[] hiddenNumbers;
 
+    /**
+     * Initializes a newly created {@code GameAlgorithms} object with the checking parameter to correct and the
+     * generating a new random value for the guessing.
+     *
+     * @param numbersLineLength {@link #numbersLineLength}
+     * @throws NumbersLineLengthException thrown if the numbers line length is incorrect
+     */
     public GameAlgorithms(byte numbersLineLength) throws NumbersLineLengthException {
         if (numbersLineLength < 0 || numbersLineLength > 9) {
             throw new NumbersLineLengthException(numbersLineLength);
@@ -27,6 +46,13 @@ public class GameAlgorithms {
         hiddenNumbers = generateRandomValue();
     }
 
+    /**
+     * The method for the calculating answer by the input line.
+     *
+     * @param inputNumbersLine the input numbers line as a {@code String} object
+     * @return a {@code GameAttempt} object with the input data and an answer.
+     * @throws InputNumbersLineFormatException thrown if the numbers line format is incorrect.
+     */
     public GameAttempt calculate(String inputNumbersLine) throws InputNumbersLineFormatException {
         if (!checkFormat(inputNumbersLine)) {
             throw new InputNumbersLineFormatException(inputNumbersLine);
