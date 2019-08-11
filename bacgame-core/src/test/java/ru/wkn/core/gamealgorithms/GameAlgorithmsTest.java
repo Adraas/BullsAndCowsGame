@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import ru.wkn.core.gameexceptions.InputNumbersLineFormatException;
 import ru.wkn.core.gameexceptions.NumbersLineLengthException;
 
+import java.lang.reflect.Field;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -14,7 +16,9 @@ class GameAlgorithmsTest {
             NoSuchFieldException, IllegalAccessException {
         GameAlgorithms gameAlgorithms = new GameAlgorithms((byte) 4);
         String hiddenNumbersLine = "1234";
-        gameAlgorithms.getClass().getField("hiddenNumbersLine").set(gameAlgorithms, hiddenNumbersLine);
+        Field field = gameAlgorithms.getClass().getDeclaredField("hiddenNumbers");
+        field.setAccessible(true);
+        field.set(gameAlgorithms, hiddenNumbersLine.toCharArray());
         assertEquals("4B0C", gameAlgorithms.calculate(hiddenNumbersLine).getResultLine());
     }
 
