@@ -16,6 +16,8 @@ public class GameAttemptResultChecker {
      * @return {@code true} if the game over, else - {@code false}
      */
     public boolean gradeResult(GameAttempt gameAttempt) {
-        return false;
+        byte numbersLineLength = (byte) gameAttempt.getInputNumbersLine().length();
+        return gameAttempt.getResultLine().startsWith(String.valueOf(numbersLineLength))
+                && gameAttempt.getResultLine().contains(String.valueOf(0));
     }
 }
