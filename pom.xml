@@ -35,6 +35,7 @@
     <modules>
         <module>repository</module>
         <module>bacgame-core</module>
+        <module>bacgame-web-core</module>
     </modules>
 
     <build>
