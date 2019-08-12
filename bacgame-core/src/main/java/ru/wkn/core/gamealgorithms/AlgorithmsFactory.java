@@ -19,13 +19,4 @@ public class AlgorithmsFactory implements IAlgorithmsFactory {
         return algorithmType.equals(AlgorithmType.SIMPLE) ? new GameAlgorithms(inputNumbersLineLength)
                 : null;
     }
-
-    /**
-     * @see IAlgorithmsFactory#createResultChecker(ResultCheckerType)
-     */
-    @Override
-    public IResultChecker createResultChecker(ResultCheckerType resultCheckerType) {
-        return resultCheckerType.equals(ResultCheckerType.SIMPLE) ? new GameAttemptResultChecker()
-                : null;
-    }
 }

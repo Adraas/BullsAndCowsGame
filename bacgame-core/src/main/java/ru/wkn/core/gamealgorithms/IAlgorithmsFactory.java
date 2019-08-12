@@ -19,11 +19,4 @@ public interface IAlgorithmsFactory {
      */
     IGameAlgorithms createGameAlgorithms(AlgorithmType algorithmType, byte inputNumbersLineLength)
             throws NumbersLineLengthException;
-
-    /**
-     * The method for the {@code IResultChecker} objects creating.
-     * @param resultCheckerType the result checker type
-     * @return a newly created {@code IResultChecker} object
-     */
-    IResultChecker createResultChecker(ResultCheckerType resultCheckerType);
 }
