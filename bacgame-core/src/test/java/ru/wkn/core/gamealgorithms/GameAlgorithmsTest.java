@@ -42,5 +42,9 @@ class GameAlgorithmsTest {
     void testSimpleCalculatingToIncorrectInputNumbersLineFormat() {
         assertThrows(InputNumbersLineFormatException.class,
                 () -> new GameAlgorithms((byte) 4).calculate("hello world"));
+        assertThrows(InputNumbersLineFormatException.class,
+                () -> new GameAlgorithms((byte) 4).calculate("1111"));
+        assertThrows(InputNumbersLineFormatException.class,
+                () -> new GameAlgorithms((byte) 4).calculate("123456"));
     }
 }
