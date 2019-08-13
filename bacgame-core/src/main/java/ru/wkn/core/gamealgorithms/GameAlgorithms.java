@@ -80,7 +80,8 @@ public class GameAlgorithms implements IGameAlgorithms {
 
     private boolean checkFormat(String inputLine) {
         Pattern pattern = Pattern.compile("[0-9]{".concat(String.valueOf(numbersLineLength)).concat("}"));
-        return pattern.matcher(inputLine).matches();
+        return pattern.matcher(inputLine).matches()
+                && inputLine.codePoints().boxed().distinct().count() == numbersLineLength;
     }
 
     private char[] generateRandomValue() {
