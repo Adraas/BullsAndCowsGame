@@ -17,7 +17,7 @@ class GameRepositoryDatabaseConnectionTest {
     private static GameRepository gameRepository;
     private static Gamer testingGamer;
     private static ApplicationContext context =
-            new ClassPathXmlApplicationContext("/META-INF/applicationContext.xml",
+            new ClassPathXmlApplicationContext("/META-INF/spring-data-context.xml",
                     GameRepositoryDatabaseConnectionTest.class);
 
     @BeforeAll

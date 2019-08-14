@@ -17,7 +17,7 @@ class GamerRepositoryDatabaseConnectionTest {
     private static String testingEmail = "wizard@mail.org";
     private static String testingPassword = "wisdom";
     private static ApplicationContext context =
-            new ClassPathXmlApplicationContext("/META-INF/applicationContext.xml",
+            new ClassPathXmlApplicationContext("/META-INF/spring-data-context.xml",
                     GamerRepositoryDatabaseConnectionTest.class);
 
     @BeforeAll
