@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="ru, en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BACGame</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/popup-windows.css">
+    <script rel="script" type="text/javascript" src="../js/BACGame.js"></script>
+    <script rel="script" type="text/javascript" src="../js/Cookies.js"></script>
+</head>
+<body onload="BACGame.updateGamerName()">
+<header>
+    <h1>Игра "Быки и коровы"</h1>
+    <h2 id="gamer-name"></h2>
+</header>
+
+<div class="center">
+    <a href="#new-game-creator-mask">Новая игра</a>
+    <br><br>
+    <a href="#statistics-mask"
+       onclick="BACGame.obtainStatistics()">Статистика</a>
+    <br><br>
+    <a href="/logout">Выход</a>
+</div>
+
+<div id="new-game-creator-mask">
+    <div class="popup-window">
+        <h2>Выбор уровня сложности</h2>
+        <label class="styled-select center">
+            <select>
+                <option onclick="BACGame.updateSelectors(1)">1</option>
+                <option onclick="BACGame.updateSelectors(2)">2</option>
+                <option onclick="BACGame.updateSelectors(3)">3</option>
+                <option onclick="BACGame.updateSelectors(4)">4</option>
+                <option onclick="BACGame.updateSelectors(5)">5</option>
+                <option onclick="BACGame.updateSelectors(6)">6</option>
+                <option onclick="BACGame.updateSelectors(7)">7</option>
+                <option onclick="BACGame.updateSelectors(8)">8</option>
+                <option onclick="BACGame.updateSelectors(9)">9</option>
+            </select>
+        </label>
+        <p>Выбранное значение обозначает длину угадываемого числа. Чем больше длина, тем выше сложность игры.</p>
+    </div>
+</div>
+<div id="new-game-mask">
+    <div class="popup-window center">
+        <div id="number-selectors" class="styled-select"></div>
+        <label for="log-area"></label>
+        <input id="log-area" type="text" readonly>
+        <a onclick="BACGame.updateLogArea()">Отправить</a>
+    </div>
+</div>
+<div id="statistics-mask">
+    <div class="popup-window">
+        <div id="table-container" class="table-scroll"></div>
+        <a href="#">OK</a>
+    </div>
+</div>
+</body>
+</html>
