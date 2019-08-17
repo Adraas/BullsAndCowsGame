@@ -17,7 +17,7 @@ html, body {
 }
 
 body {
-    background: url(../images/bac-font.png);
+    background: url(/images/bac-font.png);
     background-size: contain;
     font: 1em 'Open Sans', sans-serif;
     position: center;
@@ -100,7 +100,7 @@ a:active, input[type="submit"]:active {
     width: 240px;
     height: 34px;
     overflow: hidden;
-    background: url(../images/back_arrow.png) no-repeat right #ddd;
+    background: url(/images/back_arrow.png) no-repeat right #ddd;
 }
 
 table {
