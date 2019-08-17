@@ -6,6 +6,7 @@ class BACGame {
     static updateGamerName() {
         BACGame.xmlHttp.open("GET", "/bacgame_gamer", true);
         BACGame.xmlHttp.overrideMimeType("application/json");
+        BACGame.xmlHttp.setRequestHeader("Cookie", Cookies.getCookie(window.document, "bac-gamer"));
         BACGame.xmlHttp.onload = function() {
             let json = JSON.parse(BACGame.xmlHttp.responseText);
             window.document.getElementById("gamer-name").textContent = json.gamerName;
