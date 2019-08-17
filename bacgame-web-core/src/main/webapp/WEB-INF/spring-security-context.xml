@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans.xsd">
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+             xmlns:beans="http://www.springframework.org/schema/beans"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://www.springframework.org/schema/beans
+             https://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+             http://www.springframework.org/schema/security
+             https://www.springframework.org/schema/security/spring-security.xsd">
 
-</beans>
+    <http pattern="/css/**" security="none"/>
+    <http pattern="/images/**" security="none"/>
+    <http pattern="/js/**" security="none"/>
+    <http pattern="/sign_in.html*" security="none"/>
+
+    <http>
+        <custom-filter ref="cookieFormLoginFilter"/>
+        <intercept-url pattern="/sign_in.html*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <intercept-url pattern="/secured/**" access="ROLE_USER"/>
+        <form-login login-page='/sign_in.html' default-target-url="/security/bacgame.html"
+                    always-use-default-target="true"/>
+    </http>
+
+    <beans:bean id="cookieFormLoginFilter" class="ru.wkn.authentication.filters.CookieFormLoginFilter"/>
+
+</beans:beans>
