@@ -13,7 +13,8 @@ public class CookieFormLoginFilter implements Filter {
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
         String login = request.getParameter("login");
-        String encodingLogin = Base64.getEncoder().encodeToString(login.getBytes());
-        ((HttpServletResponse) response).addCookie(new Cookie("bac-gamer", encodingLogin));
+        String password = request.getParameter("password");
+        String encodingData = Base64.getEncoder().encodeToString(login.concat("&&").concat(password).getBytes());
+        ((HttpServletResponse) response).addCookie(new Cookie("bac-gamer", encodingData));
     }
 }
