@@ -36,9 +36,10 @@ public class GamerService implements IService {
      * The method for the registration a given {@code Gamer} object as an entity to the repository.
      *
      * @param gamer the given {@code Gamer} entity for the saving
+     * @return a {@code Gamer} object if the saving was successfully, else {@code null}
      */
-    public void registryNewGamer(Gamer gamer) {
-        gamerRepository.save(gamer);
+    public Gamer registryNewGamer(Gamer gamer) {
+        return gamerRepository.save(gamer);
     }
 
     /**
