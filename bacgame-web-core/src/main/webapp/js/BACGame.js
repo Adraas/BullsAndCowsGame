@@ -1,13 +1,13 @@
 class BACGame {
 
     static xmlHttp = new XMLHttpRequest();
-    static numbersLine = [[],[]];
+    static numbersLine = [[], []];
 
     static updateGamerName() {
         BACGame.xmlHttp.open("GET", "/bacgame_gamer", true);
         BACGame.xmlHttp.overrideMimeType("application/json");
         BACGame.xmlHttp.setRequestHeader("Cookie", Cookies.getCookie(window.document, "bac-gamer"));
-        BACGame.xmlHttp.onload = function() {
+        BACGame.xmlHttp.onload = function () {
             let json = JSON.parse(BACGame.xmlHttp.responseText);
             window.document.getElementById("gamer-name").textContent = json.gamerName;
         };
@@ -17,7 +17,7 @@ class BACGame {
     static obtainStatistics() {
         BACGame.xmlHttp.open("GET", "/bacgame_statistics", true);
         BACGame.xmlHttp.overrideMimeType("application/json");
-        BACGame.xmlHttp.onload = function() {
+        BACGame.xmlHttp.onload = function () {
             let json = JSON.parse(BACGame.xmlHttp.responseText);
             let gamers = json.gamers;
             let attempts = json.attempts;
@@ -40,18 +40,18 @@ class BACGame {
             let currentLength = BACGame.numbersLine[i].length;
             numbersLine += BACGame.numbersLine[i][currentLength - 1];
         }
-        BACGame.xmlHttp.onload = function() {
+        BACGame.xmlHttp.onload = function () {
             let json = JSON.parse(BACGame.xmlHttp.responseText);
             let logArea = window.document.getElementById("log-area");
             logArea.value = logArea.value + "\n" + json.result;
             if (json.gameIsOver === true) {
                 alert("Игра окончена!" + "Результат: " + json.resultNumbersLine + " -> " + json.bacResult);
                 BACGame.updateSelectors(0);
-                BACGame.numbersLine = [[],[]];
+                BACGame.numbersLine = [[], []];
                 window.location = "#";
             }
         };
-        BACGame.xmlHttp.send(JSON.stringify({"numbersLine" : numbersLine}));
+        BACGame.xmlHttp.send(JSON.stringify({"numbersLine": numbersLine}));
     }
 
     static updateSelectors(selectedValue) {
