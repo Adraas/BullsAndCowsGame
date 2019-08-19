@@ -5,7 +5,6 @@ class BACGame {
 
     static updateGamerName() {
         BACGame.xmlHttp.open("GET", "/bacgame_gamer", true);
-        BACGame.xmlHttp.overrideMimeType("application/json");
         BACGame.xmlHttp.setRequestHeader("Cookie", Cookies.getCookie(window.document, "bac-gamer"));
         BACGame.xmlHttp.onload = function () {
             let json = JSON.parse(BACGame.xmlHttp.responseText);
@@ -16,7 +15,6 @@ class BACGame {
 
     static obtainStatistics() {
         BACGame.xmlHttp.open("GET", "/bacgame_statistics", true);
-        BACGame.xmlHttp.overrideMimeType("application/json");
         BACGame.xmlHttp.onload = function () {
             let json = JSON.parse(BACGame.xmlHttp.responseText);
             let gamers = json.gamers;
