@@ -1,10 +1,10 @@
-package ru.wkn.service;
+package ru.wkn.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ru.wkn.entities.Gamer;
-import ru.wkn.repository.GamerRepository;
+import ru.wkn.dao.GamerRepository;
 
 /**
  * The class {@code GamerService} represents a repository service layer implementation.

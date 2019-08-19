@@ -3,7 +3,7 @@ package ru.wkn;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.wkn.service.IService;
+import ru.wkn.services.IService;
 
 /**
  * The class {@code RepositoryFacade} represents the facade of the repository.

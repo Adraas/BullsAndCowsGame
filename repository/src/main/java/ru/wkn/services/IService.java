@@ -1,4 +1,4 @@
-package ru.wkn.service;
+package ru.wkn.services;
 
 /**
  * The interface {@code IService} represents a repository service layer.

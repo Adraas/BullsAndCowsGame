@@ -1,11 +1,11 @@
-package ru.wkn.service;
+package ru.wkn.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import ru.wkn.entities.Game;
 import ru.wkn.entities.Gamer;
-import ru.wkn.repository.GameRepository;
+import ru.wkn.dao.GameRepository;
 
 import java.util.List;
 import java.util.Set;

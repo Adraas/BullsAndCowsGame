@@ -3,8 +3,8 @@
              xmlns:beans="http://www.springframework.org/schema/beans"
              xmlns:context="http://www.springframework.org/schema/context">
 
-    <repositories base-package="ru.wkn.repository"/>
-    <context:component-scan base-package="ru.wkn.service"/>
+    <repositories base-package="ru.wkn.dao"/>
+    <context:component-scan base-package="ru.wkn.services"/>
 
     <beans:bean id="persistentUnitManager" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
         <beans:property name="persistenceXmlLocations">
