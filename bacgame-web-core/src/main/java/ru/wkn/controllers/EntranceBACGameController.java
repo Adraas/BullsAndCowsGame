@@ -5,7 +5,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import ru.wkn.RepositoryFacade;
 import ru.wkn.entities.Gamer;
 import ru.wkn.services.GamerService;
@@ -17,12 +16,6 @@ public class EntranceBACGameController {
 
     public EntranceBACGameController() {
         repositoryFacade = new RepositoryFacade("gamerService");
-    }
-
-    @RequestMapping(path = {"/login*"}, method = {RequestMethod.GET})
-    public String logIn(@RequestParam(name = "login") String login, @RequestParam(name = "password") String password) {
-        Gamer gamer = ((GamerService) repositoryFacade.getService()).authenticate(login, password);
-        return gamer != null ? "/secured/bacgame" : "/sign_in";
     }
 
     @RequestMapping(path = {"/bacgame_sign_up*"}, method = {RequestMethod.POST}, produces = {"application/json"})
