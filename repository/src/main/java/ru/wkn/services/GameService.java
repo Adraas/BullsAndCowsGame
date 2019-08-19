@@ -1,5 +1,6 @@
 package ru.wkn.services;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -18,23 +19,24 @@ import java.util.stream.Collectors;
  * @see IService
  */
 @Service(value = "gameService")
-public class GameService implements IService {
+@Getter
+public class GameService implements IService<Game, Long> {
 
     /**
-     * The {@code gameRepository} bean represented a repository (DAO) layer.
+     * The {@code repository} bean represented a repository (DAO) layer.
      */
     @Qualifier(value = "gameRepository")
-    private GameRepository gameRepository;
+    private GameRepository repository;
 
     /**
      * Initializes a newly created {@code GameService} object with the simple assignment value to the
-     * {@link #gameRepository} property.
+     * {@link #repository} property.
      *
-     * @param gameRepository {@link #gameRepository}
+     * @param repository {@link #repository}
      */
     @Autowired
-    public GameService(GameRepository gameRepository) {
-        this.gameRepository = gameRepository;
+    public GameService(GameRepository repository) {
+        this.repository = repository;
     }
 
     /**
@@ -43,7 +45,7 @@ public class GameService implements IService {
      * @param game the given {@code Game} entity for the saving
      */
     public void registryNewGame(Game game) {
-        gameRepository.save(game);
+        repository.save(game);
     }
 
     /**
@@ -53,7 +55,7 @@ public class GameService implements IService {
      * @return a collection of the found objects
      */
     public Set<Game> searchGamesByGamer(Gamer gamer) {
-        return (Set<Game>) gameRepository.findGamesByGamer(gamer);
+        return (Set<Game>) repository.findGamesByGamer(gamer);
     }
 
     /**
@@ -62,7 +64,7 @@ public class GameService implements IService {
      * @return a collection of the found objects
      */
     public List<Game> getAllGamesStatistic() {
-        List<Game> gamesStatistic = (List<Game>) gameRepository.findAll();
+        List<Game> gamesStatistic = (List<Game>) repository.findAll();
         return gamesStatistic
                 .stream()
                 .sorted((game1, game2) -> Integer.compare(game2.getAttemptsNumber(), game1.getAttemptsNumber()))

@@ -1,5 +1,6 @@
 package ru.wkn.services;
 
+import lombok.Getter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -13,23 +14,24 @@ import ru.wkn.dao.GamerRepository;
  * @see IService
  */
 @Service(value = "gamerService")
-public class GamerService implements IService {
+@Getter
+public class GamerService implements IService<Gamer, Long> {
 
     /**
-     * The {@code gamerRepository} bean represented a repository (DAO) layer.
+     * The {@code repository} bean represented a repository (DAO) layer.
      */
     @Qualifier(value = "gamerRepository")
-    private GamerRepository gamerRepository;
+    private GamerRepository repository;
 
     /**
      * Initializes a newly created {@code GamerService} object with the simple assignment value to the
-     * {@link #gamerRepository} property.
+     * {@link #repository} property.
      *
-     * @param gamerRepository {@link #gamerRepository}
+     * @param repository {@link #repository}
      */
     @Autowired
-    public GamerService(GamerRepository gamerRepository) {
-        this.gamerRepository = gamerRepository;
+    public GamerService(GamerRepository repository) {
+        this.repository = repository;
     }
 
     /**
@@ -39,7 +41,7 @@ public class GamerService implements IService {
      * @return a {@code Gamer} object if the saving was successfully, else {@code null}
      */
     public Gamer registryNewGamer(Gamer gamer) {
-        return gamerRepository.save(gamer);
+        return repository.save(gamer);
     }
 
     /**
@@ -50,6 +52,6 @@ public class GamerService implements IService {
      * @return a {@code Gamer} object (entity) if it exists in a repository
      */
     public Gamer authenticate(String email, String password) {
-        return gamerRepository.findByEmailAndPassword(email, password);
+        return repository.findByEmailAndPassword(email, password);
     }
 }
