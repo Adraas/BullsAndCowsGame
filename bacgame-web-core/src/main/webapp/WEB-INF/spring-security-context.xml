@@ -11,6 +11,7 @@
     <http pattern="/images/**" security="none"/>
     <http pattern="/js/**" security="none"/>
     <http pattern="/sign_in.html*" security="none"/>
+    <http pattern="/sign_up.html*" security="none"/>
 
     <http>
         <intercept-url pattern="/sign_in.html*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
