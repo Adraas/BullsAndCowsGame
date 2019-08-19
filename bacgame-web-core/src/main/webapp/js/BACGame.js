@@ -40,13 +40,18 @@ class BACGame {
         }
         BACGame.xmlHttp.onload = function () {
             let json = JSON.parse(BACGame.xmlHttp.responseText);
-            let logArea = window.document.getElementById("log-area");
-            logArea.value = logArea.value + "\n" + json.result;
-            if (json.gameIsOver === true) {
-                alert("Игра окончена!" + "Результат: " + json.resultNumbersLine + " -> " + json.bacResult);
-                BACGame.updateSelectors(0);
-                BACGame.numbersLine = [[], []];
-                window.location = "#";
+            if (json.err === "true") {
+                alert(json.err);
+            } else {
+                let logArea = window.document.getElementById("log-area");
+                let bacResult = json.bacResult;
+                logArea.value = logArea.value + "\n" + bacResult;
+                if (json.gameIsOver === true) {
+                    alert("Игра окончена!" + "Результат: " + json.resultNumbersLine + " -> " + bacResult);
+                    BACGame.updateSelectors(0);
+                    BACGame.numbersLine = [[], []];
+                    window.location = "#";
+                }
             }
         };
         BACGame.xmlHttp.send(JSON.stringify({"numbersLine": numbersLine}));
