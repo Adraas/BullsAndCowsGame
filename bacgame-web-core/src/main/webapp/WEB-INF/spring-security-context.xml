@@ -24,6 +24,13 @@
                     always-use-default-target="true"/>
     </http>
 
+    <authentication-manager>
+        <authentication-provider ref="customSimpleAuthenticationProvider"/>
+    </authentication-manager>
+
     <beans:bean id="cookieFormLoginFilter" class="ru.wkn.authentication.filters.CookieFormLoginFilter"/>
+
+    <beans:bean id="customSimpleAuthenticationProvider"
+                class="ru.wkn.authentication.providers.CustomSimpleAuthenticationProvider"/>
 
 </beans:beans>
