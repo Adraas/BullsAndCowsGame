@@ -13,11 +13,17 @@
     <http pattern="/sign_in.html*" security="none"/>
     <http pattern="/sign_up.html*" security="none"/>
 
+    <http pattern="/login*">
+        <custom-filter ref="cookieFormLoginFilter"/>
+    </http>
+
     <http>
         <intercept-url pattern="/sign_in.html*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/secured/**" access="ROLE_USER"/>
         <form-login login-page='/sign_in.html' default-target-url="/security/bacgame.html"
                     always-use-default-target="true"/>
     </http>
+
+    <beans:bean id="cookieFormLoginFilter" class="ru.wkn.authentication.filters.CookieFormLoginFilter"/>
 
 </beans:beans>
