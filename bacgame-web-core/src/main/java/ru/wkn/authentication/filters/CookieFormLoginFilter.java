@@ -14,7 +14,9 @@ public class CookieFormLoginFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) {
         String login = request.getParameter("login");
         String password = request.getParameter("password");
-        String encodingData = Base64.getEncoder().encodeToString(login.concat("&&").concat(password).getBytes());
-        ((HttpServletResponse) response).addCookie(new Cookie("bac-gamer", encodingData));
+        if (login != null && password != null) {
+            String encodingData = Base64.getEncoder().encodeToString(login.concat("&&").concat(password).getBytes());
+            ((HttpServletResponse) response).addCookie(new Cookie("bac-gamer", encodingData));
+        }
     }
 }
