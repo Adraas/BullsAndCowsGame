@@ -7,14 +7,14 @@
              http://www.springframework.org/schema/security
              https://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http pattern="/css/**" security="none"/>
-    <http pattern="/images/**" security="none"/>
-    <http pattern="/js/**" security="none"/>
-    <http pattern="/sign_in.html*" security="none"/>
-    <http pattern="/sign_up.html*" security="none"/>
+    <http pattern="/css/**" security="none" auto-config="true" use-expressions="true"/>
+    <http pattern="/images/**" security="none" auto-config="true" use-expressions="true"/>
+    <http pattern="/js/**" security="none" auto-config="true" use-expressions="true"/>
+    <http pattern="/sign_in.html*" security="none" auto-config="true" use-expressions="true"/>
+    <http pattern="/sign_up.html*" security="none" auto-config="true" use-expressions="true"/>
 
-    <http pattern="/login*">
-        <custom-filter ref="cookieFormLoginFilter"/>
+    <http pattern="/login*" auto-config="true" use-expressions="true">
+        <custom-filter ref="cookieFormLoginFilter" after="LAST"/>
     </http>
 
     <http>
