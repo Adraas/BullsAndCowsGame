@@ -13,13 +13,11 @@
     <http pattern="/sign_in.html*" security="none"/>
     <http pattern="/sign_up.html*" security="none"/>
 
-    <http pattern="/login*" auto-config="true" use-expressions="true">
-        <custom-filter ref="cookieFormLoginFilter" after="LAST"/>
-    </http>
-
-    <http>
+    <http pattern="/login*" use-expressions="true">
+        <intercept-url pattern="/sign_up.html*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/sign_in.html*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/secured/**" access="ROLE_USER"/>
+        <custom-filter ref="cookieFormLoginFilter" after="LAST"/>
         <form-login login-page='/sign_in.html' default-target-url="/security/bacgame.html"
                     always-use-default-target="true"/>
     </http>
