@@ -19,7 +19,8 @@
         <intercept-url pattern="/secured/**" access="ROLE_USER"/>
         <custom-filter ref="cookieFormLoginFilter" after="LAST"/>
         <form-login login-page='/sign_in.html' default-target-url="/security/bacgame.html"
-                    always-use-default-target="true"/>
+                    always-use-default-target="true" username-parameter="login"/>
+        <logout delete-cookies="bac-gamer"/>
     </http>
 
     <authentication-manager>
