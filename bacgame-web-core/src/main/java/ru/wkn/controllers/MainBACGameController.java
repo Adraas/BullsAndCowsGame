@@ -54,7 +54,8 @@ public class MainBACGameController {
 
     @RequestMapping(path = {"/bacgame_attempting"}, method = {RequestMethod.POST}, produces = {"application/json"})
     @ResponseBody
-    public JSONObject getGameAttemptingResult(@RequestHeader(name = "Cookie") String cookie, @RequestBody JSONObject inputJsonObject) {
+    public JSONObject getGameAttemptingResult(@RequestHeader(name = "Cookie") String cookie,
+                                              @RequestBody JSONObject inputJsonObject) {
         String numbersLine = (String) inputJsonObject.get("numbersLine");
         try {
             Gamer gamer = getGamerByCookie(cookie);
