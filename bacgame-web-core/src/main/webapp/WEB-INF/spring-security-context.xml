@@ -17,7 +17,7 @@
         <intercept-url pattern="/sign_up.html*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/sign_in.html*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <intercept-url pattern="/secured/**" access="ROLE_USER"/>
-        <custom-filter ref="cookieFormLoginFilter" after="LAST"/>
+        <custom-filter ref="cookieRelatedFormLoginFilter" after="LAST"/>
         <form-login login-page='/sign_in.html' default-target-url="/security/bacgame.html"
                     always-use-default-target="true" username-parameter="login"
                     authentication-failure-url="/sign_in.html"/>
@@ -28,7 +28,7 @@
         <authentication-provider ref="databaseRelatedAuthenticationProvider"/>
     </authentication-manager>
 
-    <beans:bean id="cookieFormLoginFilter" class="ru.wkn.authentication.filters.CookieFormLoginFilter"/>
+    <beans:bean id="cookieRelatedFormLoginFilter" class="ru.wkn.authentication.filters.CookieRelatedFormLoginFilter"/>
 
     <beans:bean id="databaseRelatedAuthenticationProvider"
                 class="ru.wkn.authentication.providers.DatabaseRelatedAuthenticationProvider"/>
