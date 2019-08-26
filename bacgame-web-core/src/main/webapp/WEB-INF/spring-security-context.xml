@@ -25,12 +25,12 @@
     </http>
 
     <authentication-manager>
-        <authentication-provider ref="customSimpleAuthenticationProvider"/>
+        <authentication-provider ref="databaseRelatedAuthenticationProvider"/>
     </authentication-manager>
 
     <beans:bean id="cookieFormLoginFilter" class="ru.wkn.authentication.filters.CookieFormLoginFilter"/>
 
-    <beans:bean id="customSimpleAuthenticationProvider"
-                class="ru.wkn.authentication.providers.CustomSimpleAuthenticationProvider"/>
+    <beans:bean id="databaseRelatedAuthenticationProvider"
+                class="ru.wkn.authentication.providers.DatabaseRelatedAuthenticationProvider"/>
 
 </beans:beans>

@@ -11,7 +11,7 @@ import ru.wkn.services.GamerService;
 
 import java.util.ArrayList;
 
-public class CustomSimpleAuthenticationProvider implements AuthenticationProvider {
+public class DatabaseRelatedAuthenticationProvider implements AuthenticationProvider {
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
